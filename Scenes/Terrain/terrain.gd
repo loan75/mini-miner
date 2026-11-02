@@ -10,6 +10,7 @@ const CRACK_STAGES := 4
 const TERRAIN_SET := 0
 const SOURCE_ID := 0
 const ROWS_PER_FRAME := 16   # build_async: rows drawn between two frames
+const BOUNDS_COLLISION_LAYER := 4   # value 4 = layer 3, in the miner's collision mask (6)
 
 # Order matters: bit i of a mask is set when the neighbour on SIDES[i] is
 # the same terrain. PEERING_SIDES gives the matching TileSet peering bit.
@@ -26,6 +27,7 @@ var _damage: Dictionary[Vector2i, float] = {}
 var _to_clear: Array[Vector2i] = []
 var _tiles_by_mask: Dictionary[int, Dictionary] = {}   # terrain -> {mask -> atlas coords}
 var _fallback: Dictionary[int, Array] = {}             # terrain -> cells with no matching tile
+var _bounds: StaticBody2D
 
 @onready var _ground: TileMapLayer = $Mine
 @onready var _ore: TileMapLayer = $Ore
@@ -78,9 +80,9 @@ func cell_to_world(cell: Vector2i) -> Vector2:
 	return _ground.to_global(_ground.map_to_local(cell))
 
 
-## The area covered by the diggable ground, in world coordinates.
+## The area covered by the mine, in world coordinates.
 func get_world_rect() -> Rect2:
-	var rect := _ground.get_used_rect()
+	var rect := Rect2i(Vector2i.ZERO, _layout.size) if _layout else _ground.get_used_rect()
 	var tile := Vector2(_ground.tile_set.tile_size)
 	var top_left := _ground.to_global(Vector2(rect.position) * tile)
 	return Rect2(top_left, Vector2(rect.size) * tile)
@@ -194,6 +196,34 @@ func _end_build() -> void:
 	for terrain in _fallback:
 		_ground.set_cells_terrain_connect(_fallback[terrain], TERRAIN_SET, terrain)
 	_fallback.clear()
+	_update_bounds()
+
+
+# Invisible walls on the left, right and bottom of the mine. They are
+# infinite lines, so they also stop the miner in the sky above the surface.
+# Created once, then moved to the edges of each new mine.
+func _update_bounds() -> void:
+	if _bounds == null:
+		_bounds = StaticBody2D.new()
+		_bounds.name = "Bounds"
+		_bounds.collision_layer = BOUNDS_COLLISION_LAYER
+		_bounds.collision_mask = 0
+		add_child(_bounds)
+		# The normal points to the side where bodies are allowed.
+		for normal: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.UP]:
+			var boundary := WorldBoundaryShape2D.new()
+			boundary.normal = normal
+			var shape := CollisionShape2D.new()
+			shape.shape = boundary
+			_bounds.add_child(shape)
+
+	var area := get_world_rect()
+	var left: CollisionShape2D = _bounds.get_child(0)
+	var right: CollisionShape2D = _bounds.get_child(1)
+	var bottom: CollisionShape2D = _bounds.get_child(2)
+	left.global_position = Vector2(area.position.x, 0)
+	right.global_position = Vector2(area.end.x, 0)
+	bottom.global_position = Vector2(0, area.end.y)
 
 
 func _neighbour_mask(cell: Vector2i, terrain: int) -> int:
