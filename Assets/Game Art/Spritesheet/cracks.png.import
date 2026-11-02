@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci85xuajvdfov"
-path="res://.godot/imported/Miner_AllAnimations_SpriteSheet.png-2a32734563d102593e13d74368e1b557.ctex"
+uid="uid://0h0ua0sxn3ok"
+path="res://.godot/imported/cracks.png-7af2cd79cb33e92073935f2fa833b07a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Game Art/Spreadsheet/Miner_AllAnimations_SpriteSheet.png"
-dest_files=["res://.godot/imported/Miner_AllAnimations_SpriteSheet.png-2a32734563d102593e13d74368e1b557.ctex"]
+source_file="res://Assets/Game Art/Spritesheet/cracks.png"
+dest_files=["res://.godot/imported/cracks.png-7af2cd79cb33e92073935f2fa833b07a.ctex"]
 
 [params]
 

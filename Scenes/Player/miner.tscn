@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://4inog7do4nhj"]
 
 [ext_resource type="Script" uid="uid://bnlds3jr1mlwr" path="res://Scenes/Player/miner.gd" id="1_ydhuo"]
-[ext_resource type="Texture2D" uid="uid://ci85xuajvdfov" path="res://Assets/Game Art/Spreadsheet/Miner_AllAnimations_SpriteSheet.png" id="2_dvel7"]
+[ext_resource type="Texture2D" uid="uid://ci85xuajvdfov" path="res://Assets/Game Art/Spritesheet/Miner_AllAnimations_SpriteSheet.png" id="2_dvel7"]
 [ext_resource type="AudioStream" uid="uid://pkhhhw8fkuka" path="res://Assets/Sound Effect/pickaxe-blow.mp3" id="3_dvel7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4ihb"]

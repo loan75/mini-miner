@@ -63,6 +63,20 @@ func hit(cell: Vector2i, power: float) -> bool:
 	block_broken.emit(cell, block)
 	return true
 
+func build(layout: MineLayout) -> void:
+	_ground.clear()
+	_ore.clear()
+	_cracks.clear()
+	_damage.clear()
+
+	var cells_by_terrain: Dictionary[int, Array] = {}
+	for cell in layout.blocks:
+		var block := layout.blocks[cell]
+		cells_by_terrain.get_or_add(block.terrain, []).append(cell)
+		if block.overlay_tile != Vector2i(-1, -1):
+			_ore.set_cell(cell, 0, block.overlay_tile)
+	for terrain in cells_by_terrain:   # one auto-tiling call per terrain type
+		_ground.set_cells_terrain_connect(cells_by_terrain[terrain], TERRAIN_SET, terrain)
 
 # Removes every cell broken this frame with a single auto-tiling update,
 # so a drill or an explosion does not recompute the terrain once per cell.

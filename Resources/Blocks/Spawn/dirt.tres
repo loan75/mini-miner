@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BlockSpawn" format=3 uid="uid://c23jvxh1x5l7w"]
+
+[ext_resource type="Script" uid="uid://rqy7i5q8hjad" path="res://Resources/Blocks/Spawn/block_spawn.gd" id="1_dtded"]
+[ext_resource type="Resource" uid="uid://citod7cvl5wp3" path="res://Resources/Blocks/Data/dirt.tres" id="1_mxugb"]
+
+[resource]
+script = ExtResource("1_dtded")
+block = ExtResource("1_mxugb")
+weight = 100.0
+metadata/_custom_type_script = "uid://rqy7i5q8hjad"

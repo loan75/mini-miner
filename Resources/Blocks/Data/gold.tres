@@ -1,17 +1,18 @@
 [gd_resource type="Resource" script_class="BlockData" format=3 uid="uid://va2i0pc0eges"]
 
-[ext_resource type="Script" uid="uid://cusqa4fdtfgo2" path="res://Resources/Blocks/block_data.gd" id="1_8p14f"]
-[ext_resource type="AudioStream" uid="uid://bcp62yoehuffr" path="res://Assets/Sound Effect/gold.mp3" id="1_wa6sg"]
+[ext_resource type="AudioStream" uid="uid://bcp62yoehuffr" path="res://Assets/Sound Effect/gold.mp3" id="1_ent51"]
+[ext_resource type="Script" uid="uid://cusqa4fdtfgo2" path="res://Resources/Blocks/Data/block_data.gd" id="2_0xuvr"]
 
 [sub_resource type="Gradient" id="Gradient_677tj"]
 interpolation_color_space = 1
 colors = PackedColorArray(0.7057297, 0.53771687, 1.92523e-07, 1, 0, 0, 0, 1)
 
 [resource]
-script = ExtResource("1_8p14f")
+script = ExtResource("2_0xuvr")
 name = &"gold"
 hardness = 3.0
 value = 10
-hit_sound = ExtResource("1_wa6sg")
+hit_sound = ExtResource("1_ent51")
 particle_gradient = SubResource("Gradient_677tj")
+overlay_tile = Vector2i(3, 0)
 metadata/_custom_type_script = "uid://cusqa4fdtfgo2"

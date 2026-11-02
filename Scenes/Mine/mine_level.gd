@@ -3,6 +3,8 @@ extends Node2D
 ## terrain, the miner and the HUD together; they never reach each other.
 
 @export var time_limit: float = 60.0
+@export var mine: MineData
+@export var seed: int = 0
 
 var score := 0
 var _is_over := false
@@ -15,6 +17,10 @@ var _is_over := false
 
 
 func _ready() -> void:
+	var run_seed := seed if seed != 0 else randi()
+	print("Mine seed: ", run_seed)  # to reproduce a bug
+	var layout := MineGenerator.generate(mine, run_seed)
+	_terrain.build(layout)
 	_terrain.block_broken.connect(_on_block_broken)
 	_miner.energy_changed.connect(_on_energy_changed)
 	_hud.retry_requested.connect(_restart)
