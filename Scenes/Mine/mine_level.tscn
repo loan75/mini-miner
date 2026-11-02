@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bpw0ow67spa17" path="res://Scenes/HUD/hud.tscn" id="1_ew0vd"]
 [ext_resource type="Script" uid="uid://cw5a01s6cv8an" path="res://Scenes/Mine/mine_level.gd" id="1_rb12w"]
 [ext_resource type="Texture2D" uid="uid://m4fh1be6egu8" path="res://Assets/Game Art/Spritesheet/Miner16Bit_WorldTiles_01.png" id="2_6v4oj"]
-[ext_resource type="Resource" uid="uid://b4hnc24mvrjrm" path="res://Resources/Mines/tutoriel.tres" id="2_ffci4"]
-[ext_resource type="Resource" uid="uid://citod7cvl5wp3" path="res://Resources/Blocks/Data/dirt.tres" id="3_4va7c"]
-[ext_resource type="Resource" uid="uid://va2i0pc0eges" path="res://Resources/Blocks/Data/gold.tres" id="4_reibu"]
+[ext_resource type="Resource" uid="uid://b4hnc24mvrjrm" path="res://Resources/Mines/tutorial.tres" id="2_ffci4"]
+[ext_resource type="Resource" uid="uid://citod7cvl5wp3" path="res://Resources/Blocks/dirt.tres" id="3_4va7c"]
+[ext_resource type="Resource" uid="uid://cduxnex4likg4" path="res://Resources/Ores/gold.tres" id="4_reibu"]
+[ext_resource type="PackedScene" uid="uid://clcceltvdtrwr" path="res://Scenes/LoadingScreen/loading_screen.tscn" id="7_load"]
 [ext_resource type="AudioStream" uid="uid://i38hijbv0csu" path="res://Assets/Music/soundtrack.mp3" id="5_rb12w"]
 [ext_resource type="Texture2D" uid="uid://0h0ua0sxn3ok" path="res://Assets/Game Art/Spritesheet/cracks.png" id="5_reibu"]
 [ext_resource type="Script" uid="uid://b4re6of3x0rs1" path="res://Scenes/Terrain/terrain.gd" id="6_terr"]
@@ -237,11 +238,10 @@ texture = ExtResource("2_6v4oj")
 3:0/0/custom_data_0 = ExtResource("4_reibu")
 1:1/0 = 0
 1:1/0/probability = 10.0
-1:1/0/custom_data_0 = ExtResource("3_4va7c")
 
 [sub_resource type="TileSet" id="TileSet_s4ihb"]
 terrain_set_0/mode = 0
-custom_data_layer_0/name = "block"
+custom_data_layer_0/name = "ore"
 custom_data_layer_0/type = 24
 sources/0 = SubResource("TileSetAtlasSource_ew0vd")
 
@@ -292,7 +292,6 @@ position_smoothing_enabled = true
 [node name="TimeLimit" type="Timer" parent="." unique_id=1425357357]
 unique_name_in_owner = true
 one_shot = true
-autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1128442870]
 stream = ExtResource("5_rb12w")
@@ -302,3 +301,7 @@ autoplay = true
 [node name="HUD" parent="." unique_id=1104966456 instance=ExtResource("1_ew0vd")]
 unique_name_in_owner = true
 process_mode = 3
+
+[node name="LoadingScreen" parent="." unique_id=1734502913 instance=ExtResource("7_load")]
+unique_name_in_owner = true
+visible = false

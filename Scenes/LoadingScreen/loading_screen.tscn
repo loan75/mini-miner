@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://clcceltvdtrwr"]
+
+[ext_resource type="Script" uid="uid://cin1uwxoq3spd" path="res://Scenes/LoadingScreen/loading_screen.gd" id="1_hvfs7"]
+
+[node name="LoadingScreen" type="CanvasLayer" unique_id=1588044640]
+process_mode = 3
+layer = 10
+script = ExtResource("1_hvfs7")
+
+[node name="Background" type="ColorRect" parent="." unique_id=395797069]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.06, 0.05, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1802893854]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -20.0
+offset_right = 100.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Message" type="Label" parent="VBoxContainer" unique_id=1720288377]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.93, 0, 1)
+text = "Generating the mine..."
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=1844619580]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 12)
+layout_mode = 2
+show_percentage = false
