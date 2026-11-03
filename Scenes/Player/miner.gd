@@ -109,7 +109,7 @@ func _get_dig_target() -> Vector2i:
 
 
 func _can_dig(cell: Vector2i) -> bool:
-	if terrain.get_block(cell) == null:
+	if not terrain.is_diggable(cell):
 		return false
 	if facing.x != 0:   # sideways: the miner must be against the wall
 		return is_on_wall() and signf(get_wall_normal().x) == -facing.x
@@ -125,7 +125,7 @@ func _dig(target: Vector2i, delta: float) -> void:
 	if _dig_progress < dig_time:
 		return
 
-	_play_hit_sound(terrain.get_block(target))
+	_play_hit_sound(target)
 	terrain.hit(target, pickaxe_power)
 	energy -= energy_cost
 	energy_changed.emit(energy)
@@ -133,9 +133,12 @@ func _dig(target: Vector2i, delta: float) -> void:
 	_dig_target = NO_TARGET
 
 
-func _play_hit_sound(block: BlockData) -> void:
-	if block.hit_sound and _pickaxe_sound.stream != block.hit_sound:
-		_pickaxe_sound.stream = block.hit_sound
+# The ore sounds different from the ground around it: gold rings, dirt thuds.
+func _play_hit_sound(cell: Vector2i) -> void:
+	var ore := terrain.get_ore(cell)
+	var sound := ore.hit_sound if ore and ore.hit_sound else terrain.get_block(cell).hit_sound
+	if sound and _pickaxe_sound.stream != sound:
+		_pickaxe_sound.stream = sound
 	_pickaxe_sound.play()
 
 

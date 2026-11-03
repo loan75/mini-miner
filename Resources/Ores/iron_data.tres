@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="OreData" format=3 uid="uid://b2sfqgjx8ogyh"]
+
+[ext_resource type="AudioStream" uid="uid://bcp62yoehuffr" path="res://Assets/Sound Effect/gold.mp3" id="1_b30sh"]
+[ext_resource type="Script" uid="uid://ca1sat1cb7nff" path="res://Resources/Ores/ore_data.gd" id="2_xpl63"]
+
+[sub_resource type="Gradient" id="Gradient_y140e"]
+interpolation_color_space = 1
+colors = PackedColorArray(0.8924583, 0.43363786, 0, 1, 0, 0, 0, 1)
+
+[resource]
+script = ExtResource("2_xpl63")
+id = &"iron"
+name = "iron"
+tile = Vector2i(1, 0)
+extra_hardness = 1.0
+value = 5
+hit_sound = ExtResource("1_b30sh")
+particle_gradient = SubResource("Gradient_y140e")

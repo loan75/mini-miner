@@ -4,12 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://bpw0ow67spa17" path="res://Scenes/HUD/hud.tscn" id="1_ew0vd"]
 [ext_resource type="Script" uid="uid://cw5a01s6cv8an" path="res://Scenes/Mine/mine_level.gd" id="1_rb12w"]
 [ext_resource type="Texture2D" uid="uid://m4fh1be6egu8" path="res://Assets/Game Art/Spritesheet/Miner16Bit_WorldTiles_01.png" id="2_6v4oj"]
-[ext_resource type="Resource" uid="uid://b4hnc24mvrjrm" path="res://Resources/Mines/tutoriel.tres" id="2_ffci4"]
-[ext_resource type="Resource" uid="uid://citod7cvl5wp3" path="res://Resources/Blocks/Data/dirt.tres" id="3_4va7c"]
-[ext_resource type="Resource" uid="uid://va2i0pc0eges" path="res://Resources/Blocks/Data/gold.tres" id="4_reibu"]
+[ext_resource type="Resource" uid="uid://b4hnc24mvrjrm" path="res://Resources/Mines/tutorial.tres" id="2_ffci4"]
+[ext_resource type="Resource" uid="uid://citod7cvl5wp3" path="res://Resources/Blocks/dirt.tres" id="3_4va7c"]
 [ext_resource type="AudioStream" uid="uid://i38hijbv0csu" path="res://Assets/Music/soundtrack.mp3" id="5_rb12w"]
 [ext_resource type="Texture2D" uid="uid://0h0ua0sxn3ok" path="res://Assets/Game Art/Spritesheet/cracks.png" id="5_reibu"]
+[ext_resource type="Texture2D" uid="uid://pvws5rmy3o8k" path="res://Assets/Game Art/Spritesheet/ore.png" id="6_pwify"]
 [ext_resource type="Script" uid="uid://b4re6of3x0rs1" path="res://Scenes/Terrain/terrain.gd" id="6_terr"]
+[ext_resource type="PackedScene" uid="uid://clcceltvdtrwr" path="res://Scenes/LoadingScreen/loading_screen.tscn" id="7_load"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ots4m"]
 texture = ExtResource("2_6v4oj")
@@ -231,19 +232,89 @@ custom_data_layer_0/name = "block"
 custom_data_layer_0/type = 24
 sources/0 = SubResource("TileSetAtlasSource_ots4m")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ew0vd"]
-texture = ExtResource("2_6v4oj")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwify"]
+texture = ExtResource("6_pwify")
+texture_region_size = Vector2i(13, 13)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
 3:0/0 = 0
-3:0/0/custom_data_0 = ExtResource("4_reibu")
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
 1:1/0 = 0
-1:1/0/probability = 10.0
-1:1/0/custom_data_0 = ExtResource("3_4va7c")
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_s4ihb"]
 terrain_set_0/mode = 0
-custom_data_layer_0/name = "block"
+custom_data_layer_0/name = "Ore"
 custom_data_layer_0/type = 24
-sources/0 = SubResource("TileSetAtlasSource_ew0vd")
+sources/0 = SubResource("TileSetAtlasSource_pwify")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hanl8"]
 texture = ExtResource("5_reibu")
@@ -279,20 +350,18 @@ tile_set = SubResource("TileSet_ep7qb")
 
 [node name="Miner" parent="." unique_id=1072157440 node_paths=PackedStringArray("terrain") instance=ExtResource("1_08gd3")]
 unique_name_in_owner = true
-position = Vector2(231, -32)
+position = Vector2(991, -32)
 collision_mask = 6
 terrain = NodePath("../Terrain")
 
 [node name="Camera2D" type="Camera2D" parent="Miner" unique_id=1727430565]
 unique_name_in_owner = true
-zoom = Vector2(0.255, 0.255)
 limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="TimeLimit" type="Timer" parent="." unique_id=1425357357]
 unique_name_in_owner = true
 one_shot = true
-autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1128442870]
 stream = ExtResource("5_rb12w")
@@ -302,3 +371,7 @@ autoplay = true
 [node name="HUD" parent="." unique_id=1104966456 instance=ExtResource("1_ew0vd")]
 unique_name_in_owner = true
 process_mode = 3
+
+[node name="LoadingScreen" parent="." unique_id=1734502913 instance=ExtResource("7_load")]
+unique_name_in_owner = true
+visible = false

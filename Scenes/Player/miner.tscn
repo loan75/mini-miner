@@ -205,7 +205,8 @@ animations = [{
 
 [node name="Miner" type="CharacterBody2D" unique_id=1072157440]
 script = ExtResource("1_ydhuo")
-dig_time = 0.4
+dig_time = 0.1
+pickaxe_power = 10.0
 energy_cost = 2
 energy = 200
 

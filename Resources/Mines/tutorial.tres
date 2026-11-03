@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MineData" format=3 uid="uid://b4hnc24mvrjrm"]
+
+[ext_resource type="Script" uid="uid://rqy7i5q8hjad" path="res://Resources/Blocks/block_spawn.gd" id="1_cpxia"]
+[ext_resource type="Resource" uid="uid://citod7cvl5wp3" path="res://Resources/Blocks/dirt.tres" id="2_f2i1u"]
+[ext_resource type="Script" uid="uid://damffafolffsy" path="res://Resources/Mines/mine_data.gd" id="2_neu4k"]
+[ext_resource type="Script" uid="uid://bqdmb1f41hejs" path="res://Resources/Enemies/enemy_data.gd" id="3_f2i1u"]
+[ext_resource type="Script" uid="uid://c313j2ugke254" path="res://Resources/Items/item_data.gd" id="4_tkcqg"]
+[ext_resource type="Script" uid="uid://bnhxl46m3epl6" path="res://Resources/Ores/ore_spawn.gd" id="5_tkcqg"]
+[ext_resource type="Resource" uid="uid://d35w2stxvnbcl" path="res://Resources/Ores/coal_spawn.tres" id="6_tkcqg"]
+[ext_resource type="Resource" uid="uid://bdlwrag24qcol" path="res://Resources/Ores/gold_spawn.tres" id="7_6lkoy"]
+[ext_resource type="Resource" uid="uid://bq7g2dsw76aow" path="res://Resources/Ores/iron_spawn.tres" id="8_gjkpl"]
+
+[sub_resource type="Resource" id="Resource_weiwf"]
+script = ExtResource("1_cpxia")
+block = ExtResource("2_f2i1u")
+weight = 100.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0vyy4"]
+
+[resource]
+script = ExtResource("2_neu4k")
+name = &"tutorial"
+size = Vector2i(500, 500)
+noise = SubResource("FastNoiseLite_0vyy4")
+cave_threshold = -0.09999999999999998
+blocks = Array[ExtResource("1_cpxia")]([SubResource("Resource_weiwf")])
+ores = Array[ExtResource("5_tkcqg")]([ExtResource("6_tkcqg"), ExtResource("7_6lkoy"), ExtResource("8_gjkpl")])
+metadata/_custom_type_script = "uid://damffafolffsy"
