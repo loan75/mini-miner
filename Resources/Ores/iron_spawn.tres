@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="OreSpawn" format=3 uid="uid://bq7g2dsw76aow"]
+
+[ext_resource type="Script" uid="uid://cusqa4fdtfgo2" path="res://Resources/Blocks/block_data.gd" id="1_rnx6p"]
+[ext_resource type="Resource" uid="uid://b2sfqgjx8ogyh" path="res://Resources/Ores/iron_data.tres" id="2_rnx6p"]
+[ext_resource type="Script" uid="uid://bnhxl46m3epl6" path="res://Resources/Ores/ore_spawn.gd" id="3_8adjv"]
+
+[resource]
+script = ExtResource("3_8adjv")
+ore = ExtResource("2_rnx6p")
+chance = 0.1
+min_depth = 100
+max_depth = 500
+metadata/_custom_type_script = "uid://bnhxl46m3epl6"

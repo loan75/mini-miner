@@ -42,6 +42,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if OS.is_debug_build() and event.is_action_pressed("regenerate_mine") \
 			and not _is_loading and not _is_over:
 		_load_mine(randi())
+	elif OS.is_debug_build() and event.is_action_pressed("zoom_in"):
+		%Camera2D.zoom += Vector2(0.1,0.1)
+	elif OS.is_debug_build() and event.is_action_pressed("zoom_out"):
+		%Camera2D.zoom -= Vector2(0.1,0.1)
+
+
 
 
 ## Generates the mine on a worker thread, then draws it over several frames
