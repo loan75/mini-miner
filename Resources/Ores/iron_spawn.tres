@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_8adjv")
 ore = ExtResource("2_rnx6p")
-chance = 0.1
-min_depth = 100
+chance = 0.01
+min_depth = 20
 max_depth = 500
 metadata/_custom_type_script = "uid://bnhxl46m3epl6"

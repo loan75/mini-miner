@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="OreData" format=3 uid="uid://dum353qmu3abm"]
 
-[ext_resource type="AudioStream" uid="uid://bcp62yoehuffr" path="res://Assets/Sound Effect/gold.mp3" id="1_cie3q"]
-[ext_resource type="Script" uid="uid://ca1sat1cb7nff" path="res://Resources/Ores/ore_data.gd" id="2_hgory"]
+[ext_resource type="AudioStream" uid="uid://bcp62yoehuffr" path="res://Assets/Sound Effect/gold.mp3" id="1_rfhgi"]
+[ext_resource type="Script" uid="uid://ca1sat1cb7nff" path="res://Resources/Ores/ore_data.gd" id="2_pje1f"]
 
 [sub_resource type="Gradient" id="Gradient_y140e"]
 interpolation_color_space = 1
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [resource]
-script = ExtResource("2_hgory")
+script = ExtResource("2_pje1f")
 id = &"coal"
 name = "Coal"
 extra_hardness = 1.0
-value = 1
-hit_sound = ExtResource("1_cie3q")
+value = 2
+hit_sound = ExtResource("1_rfhgi")
 particle_gradient = SubResource("Gradient_y140e")

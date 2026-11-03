@@ -4,6 +4,8 @@ extends Resource
 
 @export var ore: OreData
 @export_range(0.0, 1.0, 0.001) var chance: float = 0.05   # per eligible cell
+@export var vein_size_min: int = 3
+@export var vein_size_max: int = 8
 @export var min_depth: int = 0       # in cells, 0 = top of the mine
 @export var max_depth: int = 9999
 @export var host_blocks: Array[BlockData] = []   # empty = any block
